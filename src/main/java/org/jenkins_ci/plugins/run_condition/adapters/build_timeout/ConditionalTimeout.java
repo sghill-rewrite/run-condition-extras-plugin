@@ -28,6 +28,7 @@ import hudson.model.AbstractBuild;
 import hudson.model.Describable;
 import hudson.model.Descriptor;
 import org.jenkins_ci.plugins.run_condition.RunCondition;
+import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * Encapsulates conditional timeout, which is defined by {@link RunCondition}.
@@ -38,6 +39,12 @@ public class ConditionalTimeout implements Describable<ConditionalTimeout> {
     private RunCondition condition;
     private long timeout;
 
+    @DataBoundConstructor
+    public ConditionalTimeout(RunCondition condition, long timeout) {
+        this.condition = condition;
+        this.timeout = timeout;
+    }
+ 
     public RunCondition getCondition() {
         return condition;
     }

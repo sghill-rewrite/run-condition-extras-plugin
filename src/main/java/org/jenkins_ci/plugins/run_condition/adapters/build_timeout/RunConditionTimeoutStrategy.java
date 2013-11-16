@@ -31,6 +31,7 @@ import hudson.plugins.build_timeout.BuildTimeOutStrategy;
 import hudson.plugins.build_timeout.BuildTimeOutStrategyDescriptor;
 import java.util.ArrayList;
 import java.util.List;
+import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * Timeout Strategy, which selects timeout according to run conditions.
@@ -42,6 +43,7 @@ public class RunConditionTimeoutStrategy extends BuildTimeOutStrategy  {
     private List<ConditionalTimeout> conditions;
     private long defaultTimeout;
 
+    @DataBoundConstructor
     public RunConditionTimeoutStrategy(List<ConditionalTimeout> conditions, long defaultTimeout) {
         this.conditions = conditions != null ? conditions : EMPTY;
         this.defaultTimeout = defaultTimeout;
@@ -66,13 +68,16 @@ public class RunConditionTimeoutStrategy extends BuildTimeOutStrategy  {
             AbstractBuild build = (AbstractBuild) run;
             for (ConditionalTimeout condition : conditions) {
                 if (condition.isApplicable(build)) {
-                    return defaultTimeout;
+                    //TODO: log that condition has been accepted
+                    return condition.getTimeout();
                 }
             }
         } else {
             //TODO: log error/warning
         }
         
+        // A default fallback for any case
+        //TODO: print message to log
         return defaultTimeout;
     }
 

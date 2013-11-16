@@ -24,12 +24,12 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:sl="/hudson/plugins/sidebar_link">
     <f:block>
-        <f:hetero-list field="conditions" 
-                       addCaption="${%Add Verifier}" 
-                       deleteCaption="${%Delete Verifier}"
-                       hasHeader="true" />
+        <f:repeatableProperty field="conditions" 
+                       add="${%Add Conditional Timeout}" 
+                       header="${%Conditional Timeout}" >
+        </f:repeatableProperty>
     </f:block>
-    <f:entry field="defaultTimeout" title="${%Default timeout, minutes}">
+    <f:entry field="defaultTimeout" title="${%Default timeout minutes}">
         <f:textbox default="3"/>
     </f:entry>
 </j:jelly>

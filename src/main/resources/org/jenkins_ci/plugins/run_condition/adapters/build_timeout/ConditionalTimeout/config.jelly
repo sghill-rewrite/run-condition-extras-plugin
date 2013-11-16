@@ -24,7 +24,12 @@
  <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:sl="/hudson/plugins/sidebar_link">
     <f:dropdownDescriptorSelector title="${%Run Condition}" field="condition" />
-    <f:entry title="${%Timeout, seconds}" field="timeout">
-        <f:textbox/>
+    <f:entry title="${%Timeout minutes}" field="timeout">
+        <f:textbox default="3"/>
+    </f:entry>
+    <f:entry title="">
+        <div align="right">
+            <f:repeatableDeleteButton value="Remove..."/> 
+        </div>
     </f:entry>
 </j:jelly>
