@@ -58,6 +58,7 @@ public class ConditionalTimeout implements Describable<ConditionalTimeout> {
             return condition.runPerform(build, null);
         } catch (Exception ex) {
             //TODO: write to log
+            Utils.logError(Messages.ConditionalTimeout_exceptionMsg(ex.getMessage()));
             return false;
         }
     }

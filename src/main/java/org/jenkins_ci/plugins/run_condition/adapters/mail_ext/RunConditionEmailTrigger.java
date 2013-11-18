@@ -30,7 +30,6 @@ import hudson.model.TaskListener;
 import hudson.plugins.emailext.plugins.EmailTrigger;
 import hudson.plugins.emailext.plugins.EmailTriggerDescriptor;
 import org.jenkins_ci.plugins.run_condition.RunCondition;
-import org.jenkins_ci.plugins.run_condition.adapters.run_condition.adapters.mail_ext.Messages;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
@@ -61,13 +60,14 @@ public class RunConditionEmailTrigger extends EmailTrigger {
             listener = (BuildListener)tl;
         } else {
             tl.error("[mail-trigger] - Wrong class of task listener. Skipping the trigger");
+            logError(tl, Messages.RunConditionEmailTrigger_listenerClassConvError());
             return false;
         }
         
         try {
             return condition.runPerform(ab, listener);
         } catch (Exception ex) {
-            tl.error("[run condition mail-trigger] - Exception occurred during condition evaluation. "+ex.getMessage());
+            logError(listener, Messages.RunConditionEmailTrigger_exceptionMsg() +ex.getMessage());
             return false;
         }
     }
@@ -87,7 +87,11 @@ public class RunConditionEmailTrigger extends EmailTrigger {
     public static final class DescriptorImpl extends EmailTriggerDescriptor {
         @Override
         public String getDisplayName() {
-            return Messages.adapters_MailExt_displayName();
+            return Messages.RunConditionEmailTrigger_displayName();
         }     
+    }
+    
+    private void logError(TaskListener listener, String message) {
+        listener.error(Messages.logPrefix()+message);
     }
 }

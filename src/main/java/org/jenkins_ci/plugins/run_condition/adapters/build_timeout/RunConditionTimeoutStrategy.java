@@ -25,10 +25,13 @@ package org.jenkins_ci.plugins.run_condition.adapters.build_timeout;
 
 import hudson.Extension;
 import hudson.model.AbstractBuild;
+import hudson.model.BuildListener;
 import hudson.model.Descriptor;
 import hudson.model.Run;
+import hudson.model.StreamBuildListener;
 import hudson.plugins.build_timeout.BuildTimeOutStrategy;
 import hudson.plugins.build_timeout.BuildTimeOutStrategyDescriptor;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -64,21 +67,24 @@ public class RunConditionTimeoutStrategy extends BuildTimeOutStrategy  {
 
     @Override
     public long getTimeOut(Run run) {
+        long timeout = defaultTimeout;
+        
         if (run instanceof AbstractBuild) {
             AbstractBuild build = (AbstractBuild) run;
             for (ConditionalTimeout condition : conditions) {
                 if (condition.isApplicable(build)) {
-                    //TODO: log that condition has been accepted
-                    return condition.getTimeout();
+                    timeout = condition.getTimeout();
+                    break;
                 }
             }
         } else {
-            //TODO: log error/warning
+            // Log class cast error
+            Utils.logError(Messages.RunConditionTimeoutStrategy_classConvError(
+                    run.getClass().getCanonicalName()));
         }
         
-        // A default fallback for any case
-        //TODO: print message to log
-        return defaultTimeout;
+        Utils.logMessage(Messages.RunConditionTimeoutStrategy_timeoutIs(Long.toString(timeout)));               
+        return timeout;
     }
 
     @Override
