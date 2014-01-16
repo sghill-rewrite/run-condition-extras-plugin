@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.jenkins_ci.plugins.run_condition.adapters.build_timeout;
+package com.synopsys.arc.jenkinsci.plugins.run_condition_extras.adapters.build_timeout;
 
 /**
  * Provides internal stuff for {@link RunConditionTimeoutStrategy}.

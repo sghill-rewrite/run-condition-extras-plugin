@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.jenkins_ci.plugins.run_condition.adapters.mail_ext;
+package com.synopsys.arc.jenkinsci.plugins.run_condition_extras.adapters.mail_ext;
 
 import hudson.Extension;
 import hudson.model.AbstractBuild;

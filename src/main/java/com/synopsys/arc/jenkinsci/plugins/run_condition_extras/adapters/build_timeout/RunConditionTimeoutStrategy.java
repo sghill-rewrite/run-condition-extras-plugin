@@ -21,17 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.jenkins_ci.plugins.run_condition.adapters.build_timeout;
+package com.synopsys.arc.jenkinsci.plugins.run_condition_extras.adapters.build_timeout;
 
 import hudson.Extension;
 import hudson.model.AbstractBuild;
-import hudson.model.BuildListener;
 import hudson.model.Descriptor;
 import hudson.model.Run;
-import hudson.model.StreamBuildListener;
 import hudson.plugins.build_timeout.BuildTimeOutStrategy;
 import hudson.plugins.build_timeout.BuildTimeOutStrategyDescriptor;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import org.kohsuke.stapler.DataBoundConstructor;
