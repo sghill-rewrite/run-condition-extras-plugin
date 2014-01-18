@@ -1,3 +1,4 @@
 <div>
-  Plugin provides additional run conditions and integrations.
+  Plugin provides extra run conditions and plugin integrations for 
+  <a href="https://wiki.jenkins-ci.org/display/JENKINS/Run+Condition+Plugin">Run Conditions Plugin</a>.
 </div>
