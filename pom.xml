@@ -10,9 +10,9 @@
     <artifactId>run-condition-extras</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>Jenkins Run Condition Extras</name>
-    <description>Provides additional run conditions and integrations</description>
+    <description>Provides additional run conditions and integrations for Run Conditions Plugin</description>
     <packaging>hpi</packaging>
-    <url>https://wiki.jenkins-ci.org/display/JENKINS/TODO</url>
+    <url>https://wiki.jenkins-ci.org/display/JENKINS/Run+Condition+Extras+Plugin</url>
 
     <licenses>
         <license>
