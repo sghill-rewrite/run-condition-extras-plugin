@@ -76,7 +76,7 @@ public class RunConditionEmailTrigger extends EmailTrigger {
         return condition;
     }
     
-    @Extension
+    @Extension(optional = true)
     public static final DescriptorImpl DESCRIPTOR = new DescriptorImpl();
 
     @Override

@@ -89,7 +89,7 @@ public class RunConditionTimeoutStrategy extends BuildTimeOutStrategy  {
         return DESCRIPTOR;
     }
     
-    @Extension
+    @Extension(optional = true)
     public static final DescriptorImpl DESCRIPTOR = new DescriptorImpl();
     
     public static class DescriptorImpl extends BuildTimeOutStrategyDescriptor {
