@@ -88,8 +88,8 @@ public class RunConditionEmailTrigger extends EmailTrigger {
     public RunCondition getCondition() {
         return condition;
     }
-
-    @Extension
+    
+    @Extension(optional = true)
     public static final DescriptorImpl DESCRIPTOR = new DescriptorImpl();
 
     @Override

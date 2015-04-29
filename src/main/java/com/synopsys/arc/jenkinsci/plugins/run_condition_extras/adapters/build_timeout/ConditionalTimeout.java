@@ -68,7 +68,7 @@ public class ConditionalTimeout implements Describable<ConditionalTimeout> {
         return DESCRIPTOR;
     }
     
-    @Extension
+    @Extension(optional = true)
     public static final DescriptorImpl DESCRIPTOR = new DescriptorImpl();
     
     public static class DescriptorImpl extends Descriptor<ConditionalTimeout> {
