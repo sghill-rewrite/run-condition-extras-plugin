@@ -29,8 +29,11 @@ import hudson.model.BuildListener;
 import hudson.model.TaskListener;
 import hudson.plugins.emailext.plugins.EmailTrigger;
 import hudson.plugins.emailext.plugins.EmailTriggerDescriptor;
+import hudson.plugins.emailext.plugins.RecipientProvider;
 import org.jenkins_ci.plugins.run_condition.RunCondition;
 import org.kohsuke.stapler.DataBoundConstructor;
+
+import java.util.List;
 
 /**
  * Allows to use run conditions in Extended Email Plugin.
@@ -40,19 +43,29 @@ import org.kohsuke.stapler.DataBoundConstructor;
  */
 public class RunConditionEmailTrigger extends EmailTrigger {
     RunCondition condition;
-   
-    @DataBoundConstructor
+
+    /**
+     * Deprecated. This constructor is here for backwards compatibility, but it is deprecated in email-ext-2.38.
+     */
+    @Deprecated
     public RunConditionEmailTrigger(boolean sendToList, boolean sendToDevs, boolean sendToRequestor, boolean sendToCulprits, String recipientList,
             String replyTo, String subject, String body, String attachmentsPattern, int attachBuildLog, String contentType, RunCondition condition) {
         super(sendToList, sendToDevs, sendToRequestor, sendToCulprits, recipientList, replyTo, subject, body, attachmentsPattern, attachBuildLog, contentType);
         this.condition = condition;
     }
-    
+
+    @DataBoundConstructor
+    public RunConditionEmailTrigger(List<RecipientProvider> recipientProviders, String recipientList, String replyTo, String subject,
+            String body, String attachmentsPattern, int attachBuildLog, String contentType, RunCondition condition){
+        super(recipientProviders, recipientList, replyTo, subject, body, attachmentsPattern, attachBuildLog, contentType);
+        this.condition = condition;
+    }
+
     @Override
     public boolean isPreBuild() {
         return false;
     }
-    
+
     @Override
     public boolean trigger(AbstractBuild<?, ?> ab, TaskListener tl) {
         BuildListener listener;
@@ -63,7 +76,7 @@ public class RunConditionEmailTrigger extends EmailTrigger {
             logError(tl, Messages.RunConditionEmailTrigger_listenerClassConvError());
             return false;
         }
-        
+
         try {
             return condition.runPerform(ab, listener);
         } catch (Exception ex) {
@@ -75,7 +88,7 @@ public class RunConditionEmailTrigger extends EmailTrigger {
     public RunCondition getCondition() {
         return condition;
     }
-    
+
     @Extension
     public static final DescriptorImpl DESCRIPTOR = new DescriptorImpl();
 
@@ -88,9 +101,9 @@ public class RunConditionEmailTrigger extends EmailTrigger {
         @Override
         public String getDisplayName() {
             return Messages.RunConditionEmailTrigger_displayName();
-        }     
+        }
     }
-    
+
     private void logError(TaskListener listener, String message) {
         listener.error(Messages.logPrefix()+message);
     }
