@@ -40,8 +40,8 @@ import org.kohsuke.stapler.DataBoundConstructor;
  */
 public class RunConditionTimeoutStrategy extends BuildTimeOutStrategy  {
     private static final List<ConditionalTimeout> EMPTY = new ArrayList<ConditionalTimeout>();
-    private List<ConditionalTimeout> conditions;
-    private long defaultTimeout;
+    private final List<ConditionalTimeout> conditions;
+    private final long defaultTimeout;
 
     @DataBoundConstructor
     public RunConditionTimeoutStrategy(List<ConditionalTimeout> conditions, long defaultTimeout) {

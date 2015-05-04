@@ -29,7 +29,7 @@
     </f:entry>
     <f:entry title="">
         <div align="right">
-            <f:repeatableDeleteButton value="Remove..."/> 
+            <f:repeatableDeleteButton value="${%Remove}..."/> 
         </div>
     </f:entry>
 </j:jelly>
