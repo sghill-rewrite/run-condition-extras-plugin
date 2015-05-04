@@ -8,7 +8,7 @@
 
     <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
     <artifactId>run-condition-extras</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2</version>
     <name>Jenkins Run Condition Extras Plugin</name>
     <description>Provides additional run conditions and integrations for Run Conditions Plugin</description>
     <packaging>hpi</packaging>
@@ -41,7 +41,8 @@
         <connection>scm:git:ssh://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-    </scm>
+      <tag>run-condition-extras-0.2</tag>
+  </scm>
 
     <repositories>
         <repository>
