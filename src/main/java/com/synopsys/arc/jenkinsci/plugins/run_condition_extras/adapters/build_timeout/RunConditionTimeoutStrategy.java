@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2013 Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * Copyright 2013 Oleg Nenashev, Synopsys Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * Timeout Strategy, which selects timeout according to run conditions.
- * @author Oleg Nenashev <nenashev@synopsys.com>, Synopsys Inc.
+ * @author Oleg Nenashev <o.v.nenashev@gmail.com>
  * @since 0.1
  */
 public class RunConditionTimeoutStrategy extends BuildTimeOutStrategy  {
