@@ -35,7 +35,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * Timeout Strategy, which selects timeout according to run conditions.
- * @author Oleg Nenashev <o.v.nenashev@gmail.com>
+ * @author Oleg Nenashev
  * @since 0.1
  */
 public class RunConditionTimeoutStrategy extends BuildTimeOutStrategy  {

@@ -25,7 +25,7 @@ package com.synopsys.arc.jenkinsci.plugins.run_condition_extras.adapters.build_t
 
 /**
  * Provides internal stuff for {@link RunConditionTimeoutStrategy}.
- * @author Oleg Nenashev <o.v.nenashev@gmail.com>
+ * @author Oleg Nenashev
  */
 class Utils {
     private static final String LOG_RECORDER = "global";

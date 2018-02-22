@@ -32,7 +32,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * Encapsulates conditional timeout, which is defined by {@link RunCondition}.
- * @author Oleg Nenashev <o.v.nenashev@gmail.com>
+ * @author Oleg Nenashev
  * @since 0.1
  */
 public class ConditionalTimeout implements Describable<ConditionalTimeout> {
