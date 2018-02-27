@@ -38,7 +38,7 @@ import java.util.List;
 /**
  * Allows to use run conditions in Extended Email Plugin.
  * This trigger wraps a run condition expression.
- * @author Oleg Nenashev  <o.v.nenashev@gmail.com>
+ * @author Oleg Nenashev
  * @since 0.1
  */
 public class RunConditionEmailTrigger extends EmailTrigger {
@@ -101,6 +101,11 @@ public class RunConditionEmailTrigger extends EmailTrigger {
         @Override
         public String getDisplayName() {
             return Messages.RunConditionEmailTrigger_displayName();
+        }
+
+        @Override
+        public EmailTrigger createDefault() {
+            return _createDefault();
         }
     }
 
